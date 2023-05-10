@@ -1,20 +1,32 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, StatusBar } from 'react-native';
 
-export default function App() {
+import SignIn from './src/pages/SignIn';
+
+import { NavigationContainer } from '@react-navigation/native';
+
+import Routes from './src/routes';
+
+import { AuthProvider } from './src/contexts/AuthContext';
+
+import Toast from 'react-native-toast-message';
+
+import Dashboard from './src/pages/Dashboard';
+import Order from './src/pages/Order';
+
+export default function App({ }) {
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <AuthProvider>
+        <StatusBar backgroundColor="#FF3F4B" barStyle="light-content" translucent={false} />
+        <Routes />
+      </AuthProvider>
+    </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+/*
+  --fundo: #1e1d2e
+  --green-900: #3fffa3;
+  --red-900: #FF3F4B;
+*/
